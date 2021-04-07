@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.Clock;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,9 +59,7 @@ public class CategorieController {
     @ApiOperation(value = "Met à jour la catégorie passé en paramètre.")
     @PutMapping(value = "/Categories")
     public void updateCategorie(@RequestBody Categorie categorie) {
-        Categorie categorieToUpdate = categorieDao.getOne(categorie.getId());
-        BeanUtils.copyProperties(categorie, categorieToUpdate);
-        categorieDao.save(categorieToUpdate);
+        categorieDao.save(categorie);
     }
 
     @ApiOperation(value = "Ajoute une nouvelle catégorie.")
@@ -79,5 +78,4 @@ public class CategorieController {
 
         return ResponseEntity.created(location).build();
     }
-
 }

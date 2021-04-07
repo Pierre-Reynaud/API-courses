@@ -31,6 +31,11 @@ public class Categorie {
         this.libelle = libelle;
     }
 
+    public Categorie(int id, @Length(min = 1, max = 100) String libelle) {
+        this.id = id;
+        this.libelle = libelle;
+    }
+
     //endregion
 
     //region Accesseurs
@@ -53,4 +58,13 @@ public class Categorie {
     }
 
     //endregion
+
+
+    @Override
+    public String toString() {
+        return "Categorie{" +
+                "id=" + id +
+                ", libelle='" + libelle + '\'' +
+                '}';
+    }
 }

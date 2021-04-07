@@ -98,4 +98,17 @@ public class Recette {
     }
 
     //endregion
+
+
+    @Override
+    public String toString() {
+        return "Recette{" +
+                "id=" + id +
+                ", libelle='" + libelle + '\'' +
+                ", nombrepersonne=" + nombrepersonne +
+                ", lienrecette='" + lienrecette + '\'' +
+                ", description='" + description + '\'' +
+                ", ligne_recettes=" + ligne_recettes +
+                '}';
+    }
 }

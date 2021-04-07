@@ -14,11 +14,11 @@ public class Ligne_Recette {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "ingredient")
     private Ingredient ingredient;
 
     @ManyToOne
-    @JoinColumn(name = "id",  insertable = false, updatable = false)
+    @JoinColumn(name = "recette")
     private Recette recette;
 
     private float nombrepersonne;
@@ -31,6 +31,13 @@ public class Ligne_Recette {
     }
 
     public Ligne_Recette(Ingredient ingredient, Recette recette, float nombrepersonne) {
+        this.ingredient = ingredient;
+        this.recette = recette;
+        this.nombrepersonne = nombrepersonne;
+    }
+
+    public Ligne_Recette(int id, Ingredient ingredient, Recette recette, float nombrepersonne) {
+        this.id = id;
         this.ingredient = ingredient;
         this.recette = recette;
         this.nombrepersonne = nombrepersonne;
@@ -73,4 +80,15 @@ public class Ligne_Recette {
     }
 
     //endregion
+
+
+    @Override
+    public String toString() {
+        return "Ligne_Recette{" +
+                "id=" + id +
+                ", ingredient=" + ingredient +
+                ", recette=" + recette +
+                ", nombrepersonne=" + nombrepersonne +
+                '}';
+    }
 }

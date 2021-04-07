@@ -20,7 +20,7 @@ public class Ingredient {
     private String unitemesure;
 
     @ManyToOne
-    @JoinColumn(name = "id",  insertable = false, updatable = false)
+    @JoinColumn(name = "categorie")
     private Categorie categorie;
 
     //endregion
@@ -32,6 +32,13 @@ public class Ingredient {
     }
 
     public Ingredient(@Length(min = 1) String libelle, @Length(min = 1) String unitemesure, @Min(value = 1) Categorie categorie) {
+        this.libelle = libelle;
+        this.unitemesure = unitemesure;
+        this.categorie = categorie;
+    }
+
+    public Ingredient(int id, @Length(min = 1, max = 100) String libelle, @Length(min = 1, max = 100) String unitemesure, Categorie categorie) {
+        this.id = id;
         this.libelle = libelle;
         this.unitemesure = unitemesure;
         this.categorie = categorie;
@@ -74,4 +81,15 @@ public class Ingredient {
     }
 
     //endregion
+
+
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "id=" + id +
+                ", libelle='" + libelle + '\'' +
+                ", unitemesure='" + unitemesure + '\'' +
+                ", categorie=" + categorie +
+                '}';
+    }
 }

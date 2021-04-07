@@ -33,7 +33,13 @@ public class Liste_Recette {
         this.datefin = datefin;
     }
 
-    //endregion
+    public Liste_Recette(int id, Date datedebut, Date datefin) {
+        this.id = id;
+        this.datedebut = datedebut;
+        this.datefin = datefin;
+    }
+
+//endregion
 
     //region Accesseurs
 
@@ -66,4 +72,15 @@ public class Liste_Recette {
     }
 
     //endregion
+
+
+    @Override
+    public String toString() {
+        return "Liste_Recette{" +
+                "id=" + id +
+                ", datedebut=" + datedebut +
+                ", datefin=" + datefin +
+                ", ligne_listes=" + ligne_listes +
+                '}';
+    }
 }
