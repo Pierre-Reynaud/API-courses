@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.time.Clock;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,19 +22,20 @@ import java.util.Optional;
         @Tag(name = "API Categorie Controller", description = "API pour les opérations CRUD sur les categories.")
 })
 @RestController
+@RequestMapping(path = "${API}/Categories")
 public class CategorieController {
 
     @Autowired
     private CategorieDao categorieDao;
 
     @ApiOperation(value = "Récupère la liste des catégories.")
-    @GetMapping(value = "/Categories")
+    @GetMapping(value = "")
     public List<Categorie> listeCategorie() {
         return categorieDao.findAll();
     }
 
     @ApiOperation(value = "Récupère une catégorie grâce à son ID.")
-    @GetMapping(value = "/Categories/{id}")
+    @GetMapping(value = "/{id}")
     public Categorie afficherUneCategorie(@PathVariable int id) {
         Optional<Categorie> categorie = categorieDao.findById(id);
 
@@ -46,7 +46,7 @@ public class CategorieController {
     }
 
     @ApiOperation(value = "Supprime la categorie dont l'ID est passé en paramètre.")
-    @DeleteMapping(value = "Categories/{id}")
+    @DeleteMapping(value = "/{id}")
     public void supprimerCategorie(@PathVariable int id) {
         Optional<Categorie> categorie = categorieDao.findById(id);
 
@@ -57,13 +57,13 @@ public class CategorieController {
     }
 
     @ApiOperation(value = "Met à jour la catégorie passé en paramètre.")
-    @PutMapping(value = "/Categories")
+    @PutMapping(value = "")
     public void updateCategorie(@RequestBody Categorie categorie) {
         categorieDao.save(categorie);
     }
 
     @ApiOperation(value = "Ajoute une nouvelle catégorie.")
-    @PostMapping(value = "/Categories")
+    @PostMapping(value = "")
     public ResponseEntity<Void> ajouterCategorie(@RequestBody Categorie categorie) {
         Categorie categorieAdded = categorieDao.save(categorie);
 

@@ -21,19 +21,20 @@ import java.util.Optional;
         @Tag(name = "API Recette Controller", description = "API pour les opérations CRUD sur les recettes.")
 })
 @RestController
+@RequestMapping(path = "${API}/Recettes")
 public class RecetteController {
 
     @Autowired
     private RecetteDao recetteDao;
 
     @ApiOperation(value = "Récupère la liste des recettes.")
-    @GetMapping(value = "/Recettes")
+    @GetMapping(value = "")
     public List<Recette> listeRecette() {
         return recetteDao.findAll();
     }
 
     @ApiOperation(value = "Récupère une recette grâce à son ID.")
-    @GetMapping(value = "/Recettes/{id}")
+    @GetMapping(value = "/{id}")
     public Recette afficherUneRecette(@PathVariable int id){
         Optional<Recette> recette = recetteDao.findById(id);
 
@@ -44,7 +45,7 @@ public class RecetteController {
     }
 
     @ApiOperation(value = "Supprime la recette dont l'ID est passé en paramètre.")
-    @DeleteMapping(value = "Recettes/{id}")
+    @DeleteMapping(value = "/{id}")
     public void supprimerRecette(@PathVariable int id) {
         Optional<Recette> recette = recetteDao.findById(id);
 
@@ -55,13 +56,13 @@ public class RecetteController {
     }
 
     @ApiOperation(value = "Met à jour la recette passé en paramètre.")
-    @PutMapping(value = "/Recettes")
+    @PutMapping(value = "")
     public void updateIngredient(@RequestBody Recette recette) {
         recetteDao.save(recette);
     }
 
     @ApiOperation(value = "Ajoute un nouvelle recette.")
-    @PostMapping(value = "/Recettes")
+    @PostMapping(value = "")
     public ResponseEntity<Void> ajouterRecette(@RequestBody Recette recette) {
         Recette recetteAdded = recetteDao.save(recette);
 

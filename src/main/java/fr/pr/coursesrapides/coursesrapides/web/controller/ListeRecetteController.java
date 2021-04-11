@@ -21,19 +21,20 @@ import java.util.Optional;
         @Tag(name = "API ListeRecette Controller", description = "API pour les opérations CRUD sur les listes de recette.")
 })
 @RestController
+@RequestMapping(path = "${API}/ListesRecette")
 public class ListeRecetteController {
 
     @Autowired
     private ListeRecetteDao listeRecetteDao;
 
     @ApiOperation(value = "Récupère la liste des listes de recette.")
-    @GetMapping(value = "/ListesRecette")
+    @GetMapping(value = "")
     public List<Liste_Recette> listeListeRecette() {
         return listeRecetteDao.findAll();
     }
 
     @ApiOperation(value = "Récupère une liste de recette grâce à son ID.")
-    @GetMapping(value = "/ListesRecette/{id}")
+    @GetMapping(value = "/{id}")
     public Liste_Recette afficherUneListeRecette(@PathVariable int id){
         Optional<Liste_Recette> listeRecette = listeRecetteDao.findById(id);
 
@@ -44,7 +45,7 @@ public class ListeRecetteController {
     }
 
     @ApiOperation(value = "Supprime la liste de recette dont l'ID est passé en paramètre.")
-    @DeleteMapping(value = "ListesRecette/{id}")
+    @DeleteMapping(value = "/{id}")
     public void supprimerListeRecette(@PathVariable int id) {
         Optional<Liste_Recette> listeRecette = listeRecetteDao.findById(id);
 
@@ -55,13 +56,13 @@ public class ListeRecetteController {
     }
 
     @ApiOperation(value = "Met à jour la liste de recette passé en paramètre.")
-    @PutMapping(value = "/ListesRecette")
+    @PutMapping(value = "")
     public void updateIngredient(@RequestBody Liste_Recette listeRecette) {
         listeRecetteDao.save(listeRecette);
     }
 
     @ApiOperation(value = "Ajoute un nouvelle liste de recette.")
-    @PostMapping(value = "/ListesRecette")
+    @PostMapping(value = "")
     public ResponseEntity<Void> ajouterListeRecette(@RequestBody Liste_Recette listeRecette) {
         Liste_Recette recetteListeAdded = listeRecetteDao.save(listeRecette);
 
