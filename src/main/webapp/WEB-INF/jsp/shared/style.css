@@ -1,0 +1,20 @@
+ul.submenu
+{
+ display: none;
+}
+
+li.categorie:hover .menucategorie{
+	display:block;
+}
+
+li.ingredient:hover .menuingredient{
+	display:block;
+}
+
+li.recette:hover .menurecette{
+	display:block;
+}
+
+li.listecourse:hover .menulistecourse{
+	display:block;
+}
